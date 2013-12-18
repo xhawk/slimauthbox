@@ -32,11 +32,25 @@ mysql_database 'slimauth-dev' do
   action :create
 end
 
+mysql_database 'slimauth-test' do
+  connection mysql_connection_info
+  action :create
+end
+
 mysql_database_user 'play' do
   connection    mysql_connection_info
   password      'playpass'
   database_name 'slimauth-dev'
   host          '%'
   privileges    [:select,:update,:insert,:delete]
+  action        :grant
+end
+
+mysql_database_user 'play' do
+  connection    mysql_connection_info
+  password      'playpass'
+  database_name 'slimauth-test'
+  host          '%'
+  privileges    [:all]
   action        :grant
 end

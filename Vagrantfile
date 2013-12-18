@@ -30,6 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = ["cookbooks", "mycookbooks"]
     #chef.roles_path = "../my-recipes/roles"
     #chef.data_bags_path = "../my-recipes/data_bags"
+    chef.add_recipe "mariadb"
     chef.add_recipe "mariadb::server"
     chef.add_recipe "slimauth"
     #chef.add_role "web"
